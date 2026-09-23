@@ -1,5 +1,22 @@
-from dunglas/frankenphp: 1-php8.4-alpine
-workdir /app
-copy . / app
-env port=80
-cmd ["frankenphp", "run", "--config", "/app/Caddyfile"]
+FROM composer:2 AS dependencies
+
+WORKDIR /app
+
+COPY composer.json composer.lock ./
+
+RUN composer install --no-dev --no-interaction --no-progress --optimize-autoloader
+
+
+FROM dunglas/frankenphp:1-php8.4-alpine
+
+WORKDIR /app
+
+COPY --from=dependencies /app/vendor ./vendor
+
+COPY Caddyfile /etc/caddy/Caddyfile
+
+COPY . .
+
+ENV PORT=80
+
+CMD ["frankenphp", "run", "--config", "/etc/caddy/Caddyfile"]
