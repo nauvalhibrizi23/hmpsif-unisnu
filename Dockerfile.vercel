@@ -1,0 +1,5 @@
+from dunglas/frankenphp: 1-php8.4-alpine
+workdir /app
+copy . / app
+env port=80
+cmd ["frankenphp", "run", "--config", "/app/Caddyfile"]
