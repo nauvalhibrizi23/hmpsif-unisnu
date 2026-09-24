@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
         <a class="navbar-brand" href="index.php">
-            <img src="assets/img/logo1.png" class="website-logo" alt="Logo HMPSIF" 
+            <img src="assets/img/logohmp.jpg" class="website-logo" alt="Logo HMPSIF" 
             style="width:120px !important;height:45px !important;max-width:120px !important;max-height:45px 
             !important;object-fit:contain !important;display:block !important;" >
         </a>
